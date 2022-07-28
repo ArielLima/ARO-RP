@@ -41,7 +41,7 @@ func (f *frontend) _postAdminOpenShiftClusterStartVM(ctx context.Context, r *htt
 	doc, err := f.dbOpenShiftClusters.Get(ctx, resourceID)
 	switch {
 	case cosmosdb.IsErrorStatusCode(err, http.StatusNotFound):
-		return api.NewCloudError(http.StatusNotFound, api.CloudErrorCodeResourceNotFound, "", "The Resource '%s/%s' under resource group '%s' was not found.", vars["resourceType"], vars["resourceName"], vars["resourceGroupName"])
+		return api.ResourceUnderGroupNotFound(vars)
 	case err != nil:
 		return err
 	}
