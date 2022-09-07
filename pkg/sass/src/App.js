@@ -7,17 +7,14 @@ import {MockData} from "./MockData";
 import Metrics from "./components/Metrics";
 
 function App() {
-  // Sort data
+  // Sort data - newest first
   MockData.sort((a, b) => b.date - a.date)
 
   return (
     <div className="App">
       <Grid container spacing={2}>
         <Grid item xs={12}>
-          <Actions/>
-        </Grid>
-        <Grid item xs={12}>
-          <Metrics/>
+          <Metrics data={MockData}/>
         </Grid>
         <Grid item xs={12}>
           <LogsListView data={MockData} />
