@@ -51,7 +51,7 @@ func (f *frontend) _postOpenShiftClusterCredentials(ctx context.Context, r *http
 	doc, err := f.dbOpenShiftClusters.Get(ctx, r.URL.Path)
 	switch {
 	case cosmosdb.IsErrorStatusCode(err, http.StatusNotFound):
-		return nil, api.NewCloudError(http.StatusNotFound, api.CloudErrorCodeResourceNotFound, "", "The Resource '%s/%s' under resource group '%s' was not found.", vars["resourceType"], vars["resourceName"], vars["resourceGroupName"])
+		return nil, api.ResourceUnderGroupNotFound(vars)
 	case err != nil:
 		return nil, err
 	}

@@ -30,6 +30,5 @@ func (f *frontend) _postAdminOpenShiftClusterStartVM(log *logrus.Entry, ctx cont
 	if err != nil {
 		return err
 	}
-
 	return f.adminAction.VMStartAndWait(ctx, azActionsWrapper.vmName)
 }
